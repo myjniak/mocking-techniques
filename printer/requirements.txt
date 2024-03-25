@@ -1,0 +1,5 @@
+pyqt6
+pytest
+mock
+pytest-mock
+Markdown~=3.6

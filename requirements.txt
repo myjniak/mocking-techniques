@@ -1,0 +1,3 @@
+-r memes/requirements.txt
+-r nbp_api_mock/requirements.txt
+-r printer/requirements.txt
