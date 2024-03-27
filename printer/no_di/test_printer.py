@@ -5,7 +5,7 @@ from mock import patch
 
 
 @pytest.mark.parametrize("md_filepath, expected", [
-    ("data/sample.md", "I\nlove\npancakes\n\n\nPrinted by:\nJohn Awesome")
+    ("data/sample.md", "I\nlove\npancakes\n\n\nPrinted by:\nMe")
 ])
 def test_with_patching(mocker, md_filepath: str, expected: str):
     spy = mocker.spy(QTextDocument, "toPlainText")

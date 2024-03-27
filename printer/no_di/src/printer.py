@@ -17,7 +17,7 @@ def prepare_document(text: str) -> QTextDocument:
     cursor.movePosition(QTextCursor.MoveOperation.End)
     cursor.insertBlock()
     cursor.movePosition(QTextCursor.MoveOperation.End)
-    cursor.insertText("\n\nPrinted by:\nJohn Awesome")
+    cursor.insertText("\n\nPrinted by:\nMe")
     return document
 
 
@@ -28,7 +28,6 @@ def print_markdown_file(filepath: str):
         printer = QPrinter()
         printer.setFullPage(True)
         document.print(printer)
-        return document
 
 
 if __name__ == "__main__":
