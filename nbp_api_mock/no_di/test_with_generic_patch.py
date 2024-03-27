@@ -8,9 +8,10 @@ def mocked_get(_):
     class MockedResponse:
         @staticmethod
         def json():
-            return {"rates": [{"mid": 0.5}]}
+            return {"rates": [{"mid": 6.5}]}
 
-        def raise_for_status(self):
+        @staticmethod
+        def raise_for_status():
             pass
     return MockedResponse()
 
@@ -18,4 +19,4 @@ def mocked_get(_):
 def test_rate():
     with patch.object(httpx, "get", mocked_get):
         pln = to_pln(Currency.EUR, 100)
-    assert pln == 50
+    assert pln == 650
