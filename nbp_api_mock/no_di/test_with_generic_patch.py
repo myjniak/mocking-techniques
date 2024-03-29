@@ -3,20 +3,19 @@ import httpx
 from mock import patch
 
 
-def mocked_get(_):
-    """Replacement for httpx.get which always returns a fixed json in its body."""
-    class MockedResponse:
-        @staticmethod
-        def json():
-            return {"rates": [{"mid": 6.5}]}
+class MockedResponse:
+    @staticmethod
+    def json():
 
-        @staticmethod
-        def raise_for_status():
-            pass
-    return MockedResponse()
+        return {"rates": [{"mid": 6.5}]}
+
+    @staticmethod
+    def raise_for_status():
+        pass
 
 
 def test_rate():
-    with patch.object(httpx, "get", mocked_get):
+    with patch.object(httpx, "get", return_value=MockedResponse()) as mocked_get:
         pln = to_pln(Currency.EUR, 100)
     assert pln == 650
+    mocked_get.assert_called_once_with("https://api.nbp.pl/api/exchangerates/rates/a/eur/last")
