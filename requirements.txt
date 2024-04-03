@@ -1,2 +1,3 @@
 -r nbp_api_mock/requirements.txt
 -r printer/requirements.txt
+-r aws/requirements.txt
